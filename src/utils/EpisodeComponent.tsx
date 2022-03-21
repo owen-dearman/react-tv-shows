@@ -10,7 +10,11 @@ export default function EpisodeComponent(
     (episodeInfo: IEpisode) => {
       episodeDataPreparation(episodeData);
       return (
-        <div className="blockContent" key={episodeInfo.id} id={episodeInfo.id.toString()}>
+        <div
+          className="blockContent"
+          key={episodeInfo.id}
+          id={episodeInfo.id.toString()}
+        >
           <h2 className="blockTitle">
             S{twoDigitConverter(episodeInfo.season)}E
             {twoDigitConverter(episodeInfo.number)} - {episodeInfo.name}
