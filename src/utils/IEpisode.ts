@@ -10,8 +10,8 @@ export interface IEpisode {
   airstamp: string;
   runtime: number;
   rating: {
-    average: number; 
-  }
+    average: number;
+  };
   image: {
     medium: string;
     original: string;
