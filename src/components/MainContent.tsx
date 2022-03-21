@@ -21,10 +21,6 @@ function MainContent(): JSX.Element {
             S{twoDigitConverter(episodeInfo.season)}E
             {twoDigitConverter(episodeInfo.number)} - {episodeInfo.name}
           </h2>
-          <img
-            src={episodeInfo.image.medium}
-            alt={episodeInfo.name + " image"}
-          />
           {episodeInfo.image && (
             <img
               src={episodeInfo.image.medium}
