@@ -12,12 +12,11 @@ body{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .blockContent {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
+    width: 25%;
     padding: 20px;
     margin: 10px;
     background-color: rgb(12, 0, 63);
