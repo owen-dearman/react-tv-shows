@@ -1,4 +1,4 @@
-import EpisodeComponent from "../utils/EpisodeMap";
+import EpisodeComponent from "../utils/EpisodeComponent";
 
 function MainContent(): JSX.Element {
   return (

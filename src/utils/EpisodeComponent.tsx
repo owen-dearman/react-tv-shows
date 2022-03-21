@@ -1,7 +1,7 @@
-import episodeData from "../utils/episodes.json";
-import { IEpisode } from "../utils/IEpisode";
-import { episodeDataPreparation } from "../utils/episodeDataPreparation";
-import { twoDigitConverter } from "../utils/twoDigitConverter";
+import episodeData from "./episodes.json";
+import { IEpisode } from "./IEpisode";
+import { episodeDataPreparation } from "./episodeDataPreparation";
+import { twoDigitConverter } from "./twoDigitConverter";
 
 export default function EpisodeComponent(): JSX.Element {
   const episodeComponents = episodeData.map((episodeInfo: IEpisode) => {
