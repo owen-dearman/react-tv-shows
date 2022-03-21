@@ -11,18 +11,25 @@ function MainContent(): JSX.Element {
 
   return (
     <>
-      <hr />
-      <input
-        placeholder="Search Here"
-        value={searchInput}
-        onChange={(e) => setSearchInput(e.target.value)}
-      />
-      <select onChange={(e) => setSearchInput(e.target.value)}>
-        {optionsList}
-      </select>
-      <button onClick={() => setSearchInput("")}>Show All</button>
-      <hr />
-      <p>
+      <div style={{ textAlign: "center" }}>
+        <hr />
+        <input
+          style={{ fontSize: 20 }}
+          placeholder="Search Here"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+        <button onClick={() => setSearchInput("")}>Clear Search</button>
+        <select
+          style={{ fontSize: 20 }}
+          onChange={(e) => setSearchInput(e.target.value)}
+        >
+          {optionsList}
+        </select>
+        <button onClick={() => setSearchInput("")}>Show All</button>
+        <hr />
+      </div>
+      <p className="subtitle">
         Showing {filteredData.length} of {episodeData.length}
       </p>
       <div className="block">{EpisodeComponent(filteredData)}</div>

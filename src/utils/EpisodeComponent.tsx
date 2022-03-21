@@ -17,8 +17,9 @@ export default function EpisodeComponent(
         >
           <h2 className="blockTitle">
             S{twoDigitConverter(episodeInfo.season)}E
-            {twoDigitConverter(episodeInfo.number)} - {episodeInfo.name}
+            {twoDigitConverter(episodeInfo.number)}
           </h2>
+          <h2>{episodeInfo.name}</h2>
           {episodeInfo.image && (
             <img
               src={episodeInfo.image.medium}
@@ -27,9 +28,12 @@ export default function EpisodeComponent(
           )}
           {episodeInfo.image === null && <i>image unavailable</i>}
           <p>{episodeInfo.summary}</p>
-          <h4>Episode Run Time: {episodeInfo.runtime} minutes</h4>
-          <hr />
-          <h3>Episode Rating: {episodeInfo.rating.average} / 10</h3>
+          <h4 className="blockSubtitle">
+            Episode Run Time: {episodeInfo.runtime} minutes
+          </h4>
+          <h4 className="blockSubtitle">
+            Episode Rating: {episodeInfo.rating.average} / 10
+          </h4>
         </div>
       );
     }

@@ -2,10 +2,23 @@ body{
     background-color: rgb(0, 2, 128);
     width: 90%;;
     border-left: 20px solid #00ffff;
+    border-top: 20px solid #00ffff;
     height: auto;
     margin: 50px auto;
-    border-radius: 100px;
+    border-radius: 150px;
     padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.appTitle{
+    color:yellow;
+    font-size: 100px;
+    text-align: center;
+    text-shadow: 10px;
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .block{
@@ -25,6 +38,8 @@ body{
     border: 10px solid #00ffff;
     border-radius: 50px;
     text-align: center;
+    justify-content: center;
+
 }
 
 .blockTitle {
@@ -32,10 +47,17 @@ body{
     color:rgb(253, 249, 9)
 }
 
+.subtitle {
+    font-size: 30px;
+    color: yellow;
+}
+
 img{
+    width: 85%;
     border: 10px solid #00ffff;
     border-radius: 10px;
     padding: 5px;
+    text-align: center;
 }
 
 li {
@@ -45,19 +67,20 @@ li {
     
 }
 
-li:not(:last-child)::before{
+li:not(:last-child):after{
     color:rgb(255, 255, 255);
     font-size: 30px;
     content: '|';
     margin: 0 4px;
 }
 
-li:last-child a {
-	border-right: none;
-}
-
 a{
     color:rgb(255, 255, 255);
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+button{
+    font-size: 20px;
+    background-color: yellow;
 }
