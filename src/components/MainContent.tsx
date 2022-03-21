@@ -17,7 +17,6 @@ function MainContent(): JSX.Element {
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
       />
-
       <select onChange={(e) => setSearchInput(e.target.value)}>
         {optionsList}
       </select>
@@ -26,7 +25,7 @@ function MainContent(): JSX.Element {
       <p>
         Showing {filteredData.length} of {episodeData.length}
       </p>
-      {EpisodeComponent(filteredData)}
+      <div className="block">{EpisodeComponent(filteredData)}</div>
     </>
   );
 }
