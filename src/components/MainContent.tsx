@@ -2,8 +2,6 @@ import { useState } from "react";
 import episodeData from "../utils/episodes.json";
 import { searchFilteredData } from "../utils/searchFilteredData";
 import EpisodeComponent from "../utils/EpisodeComponent";
-import { twoDigitConverter } from "../utils/twoDigitConverter";
-import { IEpisode } from "../utils/IEpisode";
 import { optionsList } from "../utils/OptionList";
 
 function MainContent(): JSX.Element {
@@ -19,12 +17,12 @@ function MainContent(): JSX.Element {
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
       />
-     
-      <select onChange={e=>setSearchInput(e.target.value)}>
-      {optionsList}
+
+      <select onChange={(e) => setSearchInput(e.target.value)}>
+        {optionsList}
       </select>
-      <button onClick={()=>setSearchInput("")}>Show All</button>
-      <hr/>
+      <button onClick={() => setSearchInput("")}>Show All</button>
+      <hr />
       <p>
         Showing {filteredData.length} of {episodeData.length}
       </p>

@@ -3,7 +3,7 @@
 function Header(): JSX.Element {
   return (
     <>
-      <h1>MovieNames</h1>      
+      <h1>MovieNames</h1>
     </>
   );
 }
