@@ -10,8 +10,8 @@ export default function EpisodeComponent(
     (episodeInfo: IEpisode) => {
       episodeDataPreparation(episodeData);
       return (
-        <div key={episodeInfo.id} id={episodeInfo.id.toString()}>
-          <h2>
+        <div className="blockContent" key={episodeInfo.id} id={episodeInfo.id.toString()}>
+          <h2 className="blockTitle">
             S{twoDigitConverter(episodeInfo.season)}E
             {twoDigitConverter(episodeInfo.number)} - {episodeInfo.name}
           </h2>
@@ -23,8 +23,9 @@ export default function EpisodeComponent(
           )}
           {episodeInfo.image === null && <i>image unavailable</i>}
           <p>{episodeInfo.summary}</p>
-          <p>Episode Run-Time: {episodeInfo.runtime}</p>
-          <p>Episode Rating: {episodeInfo.rating.average}</p>
+          <h4>Episode Run Time: {episodeInfo.runtime} minutes</h4>
+          <hr />
+          <h3>Episode Rating: {episodeInfo.rating.average} / 10</h3>
         </div>
       );
     }

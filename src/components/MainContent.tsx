@@ -16,11 +16,12 @@ function MainContent(): JSX.Element {
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
       />
-      <hr />
-      <p>
-        Showing {filteredData.length} of {episodeData.length}
-      </p>
-      {EpisodeComponent(filteredData)}
+        <p>
+          Showing {filteredData.length} of {episodeData.length}
+        </p>
+        <div className="block">
+        {EpisodeComponent(filteredData)}
+        </div>
     </>
   );
 }
