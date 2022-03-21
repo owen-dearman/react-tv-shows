@@ -16,6 +16,8 @@ function MainContent(): JSX.Element {
             alt={episodeInfo.name + " image"}
           />
           <p>{episodeInfo.summary}</p>
+          <h3>Episode Run-Time: {episodeInfo.runtime}</h3>
+          <h3>Episode Rating: {episodeInfo.rating}</h3>
         </div>
       );
     }
