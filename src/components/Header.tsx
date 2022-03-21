@@ -1,4 +1,5 @@
 import episodesData from "../utils/episodes.json";
+import { twoDigitConverter } from "../utils/twoDigitConverter";
 function Header(): JSX.Element {
   return (
     <>
@@ -6,7 +7,8 @@ function Header(): JSX.Element {
       {episodesData.map((episode) => (
         <li key={episode.id}>
           <a href={"#" + episode.id}>
-            S{episode.season}E{episode.number}
+            S{twoDigitConverter(episode.season)}E
+            {twoDigitConverter(episode.number)}
           </a>
         </li>
       ))}
