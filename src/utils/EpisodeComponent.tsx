@@ -7,7 +7,7 @@ export default function EpisodeComponent(): JSX.Element {
   const episodeComponents = episodeData.map((episodeInfo: IEpisode) => {
     episodeDataPreparation(episodeData);
     return (
-      <div key={episodeInfo.id}>
+      <div key={episodeInfo.id} id={episodeInfo.id.toString()}>
         <h2>
           S{twoDigitConverter(episodeInfo.season)}E
           {twoDigitConverter(episodeInfo.number)} - {episodeInfo.name}
