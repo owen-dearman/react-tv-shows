@@ -1,0 +1,16 @@
+li {
+    display:inline-block;
+    list-style: none;
+    padding: 2px
+    
+}
+
+
+li:not(:last-child):after {
+    content: '|';
+    margin: 0 4px;
+}
+
+li:last-child a {
+	border-right: none;
+
