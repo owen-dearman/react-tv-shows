@@ -1,10 +1,10 @@
 import { useState } from "react";
-import episodeData from "../utils/episodes.json";
 import { searchFilteredData } from "../utils/searchFilteredData";
 import EpisodeComponent from "../utils/EpisodeComponent";
 import { optionsList } from "../utils/OptionList";
+import { IEpisode } from "../utils/IEpisode";
 
-function MainContent(): JSX.Element {
+function MainContent(episodeData: IEpisode[]): JSX.Element {
   const [searchInput, setSearchInput] = useState<string>("");
 
   const filteredData = searchFilteredData(episodeData, searchInput);
@@ -24,7 +24,7 @@ function MainContent(): JSX.Element {
           style={{ fontSize: 20 }}
           onChange={(e) => setSearchInput(e.target.value)}
         >
-          {optionsList}
+          {optionsList(episodeData)}
         </select>
         <button onClick={() => setSearchInput("")}>Show All</button>
         <hr />
@@ -32,7 +32,7 @@ function MainContent(): JSX.Element {
       <p className="subtitle">
         Showing {filteredData.length} of {episodeData.length}
       </p>
-      <div className="block">{EpisodeComponent(filteredData)}</div>
+      <div className="block">{EpisodeComponent(filteredData, episodeData)}</div>
     </>
   );
 }
