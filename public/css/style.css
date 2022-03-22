@@ -1,3 +1,65 @@
+body{
+    background-color: rgb(0, 2, 128);
+    width: 95%;;
+    border-left: 30px solid #00ffff;
+    border-top: 30px solid #00ffff;
+    height: auto;
+    margin: 50px auto;
+    border-radius: 150px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.appTitle{
+    color:yellow;
+    font-size: 100px;
+    text-align: center;
+    text-shadow: 100px;
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.block{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.blockContent {
+    width: 40%;
+    padding: 15px;
+    margin: 5px;
+    background-color: rgb(12, 0, 63);
+    color:rgb(255, 255, 255);
+    font-size: 20px;
+    border: 10px solid #00ffff;
+    border-radius: 50px;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.blockTitle {
+    text-align: center;
+    color:rgb(253, 249, 9)
+}
+
+.subtitle {
+    font-size: 30px;
+    color: yellow;
+}
+
+img{
+    width: 60%;
+    border: 10px solid #00ffff;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
 li {
     display:inline-block;
     list-style: none;
@@ -5,12 +67,20 @@ li {
     
 }
 
-
-li:not(:last-child):after {
+li:not(:last-child):after{
+    color:rgb(255, 255, 255);
+    font-size: 30px;
     content: '|';
     margin: 0 4px;
 }
 
-li:last-child a {
-	border-right: none;
+a{
+    color:rgb(255, 255, 255);
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
+button{
+    font-size: 20px;
+    background-color: yellow;
+}
