@@ -17,11 +17,12 @@ function App(): JSX.Element {
     };
     fetchData();
   }, []);
+
   return (
     <>
       <Header />
       {MainContent(episodeData)}
-      {Footer(episodeData)}
+      <Footer episodeData={episodeData} />
     </>
   );
 }
