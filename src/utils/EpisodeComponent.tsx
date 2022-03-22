@@ -32,7 +32,8 @@ export default function EpisodeComponent(
             Episode Run Time: {episodeInfo.runtime} minutes
           </h4>
           <h4 className="blockSubtitle">
-            Episode Rating: {episodeInfo.rating.average} / 10
+            {episodeInfo.rating.average &&
+              `Episode Rating: ${episodeInfo.rating.average} / 10`}
           </h4>
         </div>
       );
