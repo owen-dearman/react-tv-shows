@@ -1,4 +1,3 @@
-import episodeData from "./episodes.json";
 import { IEpisode } from "./IEpisode";
 
 export const searchFilteredData = (
