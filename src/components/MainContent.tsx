@@ -7,7 +7,7 @@ import { optionsList } from "../utils/OptionList";
 function MainContent(): JSX.Element {
   const [searchInput, setSearchInput] = useState<string>("");
 
-  const filteredData = searchFilteredData(searchInput);
+  const filteredData = searchFilteredData(episodeData, searchInput);
 
   return (
     <>
