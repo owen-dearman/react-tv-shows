@@ -27,16 +27,17 @@ function MainContent(): JSX.Element {
 
   const filteredData = searchFilteredData(episodeData, searchInput);
 
-  
-
   return (
     <>
       <div style={{ textAlign: "center" }}>
         <hr />
-        <select style={{ fontSize: 20 }} onChange={(e) => setData(parseInt(e.target.value))}>
-        {showsList()}
-      </select>
-      <br/>
+        <select
+          style={{ fontSize: 20 }}
+          onChange={(e) => setData(parseInt(e.target.value))}
+        >
+          {showsList()}
+        </select>
+        <br />
         <input
           style={{ fontSize: 20 }}
           placeholder="Search Here"
@@ -58,19 +59,19 @@ function MainContent(): JSX.Element {
       </p>
       <div className="block">{EpisodeComponent(filteredData, episodeData)}</div>
       <footer className="subtitle">
-      <hr />
-      The data displayed on this webpage is the property of TVMaze. Please click
-      below to navigate to the official data source for each episode.
-      <br />
-      {episodeData.map((episode) => (
-        <li key={episode.id}>
-          <a href={episode.url}>
-            S{twoDigitConverter(episode.season)}E
-            {twoDigitConverter(episode.number)}
-          </a>
-        </li>
-      ))}
-    </footer>
+        <hr />
+        The data displayed on this webpage is the property of TVMaze. Please
+        click below to navigate to the official data source for each episode.
+        <br />
+        {episodeData.map((episode) => (
+          <li key={episode.id}>
+            <a href={episode.url}>
+              S{twoDigitConverter(episode.season)}E
+              {twoDigitConverter(episode.number)}
+            </a>
+          </li>
+        ))}
+      </footer>
     </>
   );
 }
