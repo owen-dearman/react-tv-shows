@@ -13,10 +13,9 @@ interface EpisodeContentInterface {
 }
 
 function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
-
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   const [episodeData, setEpisodeData] = useState<IEpisode[]>([]);
 
