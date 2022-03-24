@@ -1,11 +1,13 @@
 // import episodeData from "./episodes.json";
 // import { IShow } from "./IShow";
 import showData from "./shows.json";
+import { episodeDataPreparation } from "../utils/episodeDataPreparation";
 
 export default function ShowComponent(
-  filteredData: typeof showData
+  showDataArray: typeof showData
 ): JSX.Element {
-  const showComponents: JSX.Element[] = filteredData.map((seriesInfo) => {
+  episodeDataPreparation(showData);
+  const showComponents: JSX.Element[] = showDataArray.map((seriesInfo) => {
     return (
       <div
         className="blockContent"
