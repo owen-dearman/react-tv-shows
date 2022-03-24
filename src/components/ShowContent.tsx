@@ -5,6 +5,8 @@ import { showFilteredData } from "../utils/showFilteredData";
 
 interface ShowContentProps {
   handleClick: () => void;
+  currentShow: number;
+  setCurrentShow: (x: number) => void;
 }
 
 function ShowContent(props: ShowContentProps): JSX.Element {
@@ -30,7 +32,8 @@ function ShowContent(props: ShowContentProps): JSX.Element {
       <div className="block">
         {" "}
         <ShowComponent
-          showDataArray={showData}
+          setCurrentShow={props.setCurrentShow}
+          showDataArray={filteredData}
           handleClick={props.handleClick}
         />
       </div>

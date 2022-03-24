@@ -3,13 +3,17 @@ import { IEpisode } from "./IEpisode";
 import { episodeDataPreparation } from "./episodeDataPreparation";
 import { twoDigitConverter } from "./twoDigitConverter";
 
+interface EpisodeComponentInterface {
+  filteredData: IEpisode[];
+  episodeData: IEpisode[];
+}
+
 export default function EpisodeComponent(
-  filteredData: IEpisode[],
-  episodeData: IEpisode[]
+  props: EpisodeComponentInterface
 ): JSX.Element {
-  const episodeComponents: JSX.Element[] = filteredData.map(
+  const episodeComponents: JSX.Element[] = props.filteredData.map(
     (episodeInfo: IEpisode) => {
-      episodeDataPreparation(episodeData);
+      episodeDataPreparation(props.episodeData);
       return (
         <div
           className="blockContent"

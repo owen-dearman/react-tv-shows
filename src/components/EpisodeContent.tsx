@@ -4,24 +4,26 @@ import EpisodeComponent from "../utils/EpisodeComponent";
 import { optionsList } from "../utils/OptionList";
 import { IEpisode } from "../utils/IEpisode";
 import { useEffect } from "react";
-import showData from "../utils/shows.json";
 import { twoDigitConverter } from "../utils/twoDigitConverter";
 import { showsList } from "../utils/ShowsList";
 
-function EpisodeContent(): JSX.Element {
+interface EpisodeContentInterface {
+  currentShow: number;
+  setCurrentShow: (x: number) => void;
+}
+
+function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
   const [episodeData, setEpisodeData] = useState<IEpisode[]>([]);
-  const [data, setData] = useState<number>(showData[0].id);
 
   useEffect(() => {
-    const url = `https://api.tvmaze.com/shows/${data}/episodes`;
+    const url = `https://api.tvmaze.com/shows/${props.currentShow}/episodes`;
     const fetchData = async () => {
       const response = await fetch(url);
       const jsonBody: IEpisode[] = await response.json();
       setEpisodeData(jsonBody);
-      //console.log(jsonBody);
     };
     fetchData();
-  }, [data]);
+  }, [props.currentShow]);
 
   const [searchInput, setSearchInput] = useState<string>("");
   const filteredData = searchFilteredData(episodeData, searchInput);
@@ -32,7 +34,8 @@ function EpisodeContent(): JSX.Element {
         <hr />
         <select
           style={{ fontSize: 20 }}
-          onChange={(e) => setData(parseInt(e.target.value))}
+          onChange={(e) => props.setCurrentShow(parseInt(e.target.value))}
+          defaultValue={props.currentShow}
         >
           {showsList()}
         </select>
@@ -56,7 +59,13 @@ function EpisodeContent(): JSX.Element {
       <p className="subtitle">
         Showing {filteredData.length} of {episodeData.length}
       </p>
-      <div className="block">{EpisodeComponent(filteredData, episodeData)}</div>
+      <div className="block">
+        {" "}
+        <EpisodeComponent
+          filteredData={filteredData}
+          episodeData={episodeData}
+        />
+      </div>
       <footer className="subtitle">
         <hr />
         The data displayed on this webpage is the property of TVMaze. Please

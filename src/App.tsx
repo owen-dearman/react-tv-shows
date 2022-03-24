@@ -1,10 +1,12 @@
 import EpisodeContent from "./components/EpisodeContent";
 import ShowContent from "./components/ShowContent";
 import Header from "./components/Header";
+import showData from "./utils/shows.json";
 import { useState } from "react";
 
 function App(): JSX.Element {
   const [view, setView] = useState<boolean>(false);
+  const [data, setData] = useState<number>(showData[0].id);
 
   function handleClick() {
     setView(!view);
@@ -15,8 +17,14 @@ function App(): JSX.Element {
       <Header />
       <button onClick={() => setView(!view)}>View Main Content</button>
 
-      {view && <EpisodeContent />}
-      {!view && <ShowContent handleClick={handleClick} />}
+      {view && <EpisodeContent currentShow={data} setCurrentShow={setData} />}
+      {!view && (
+        <ShowContent
+          currentShow={data}
+          setCurrentShow={setData}
+          handleClick={handleClick}
+        />
+      )}
     </>
   );
 }

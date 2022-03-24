@@ -6,6 +6,7 @@ import { episodeDataPreparation } from "../utils/episodeDataPreparation";
 interface ShowComponentProps {
   showDataArray: typeof showData;
   handleClick: () => void;
+  setCurrentShow: (x: number) => void;
 }
 
 export default function ShowComponent(props: ShowComponentProps): JSX.Element {
@@ -18,7 +19,10 @@ export default function ShowComponent(props: ShowComponentProps): JSX.Element {
           className="blockContent"
           key={seriesInfo.id}
           id={seriesInfo.id.toString()}
-          onClick={props.handleClick}
+          onClick={() => {
+            props.handleClick();
+            props.setCurrentShow(seriesInfo.id);
+          }}
         >
           <h2>{seriesInfo.name}</h2>
           <p>{seriesInfo.genres.join(", ")}</p>
