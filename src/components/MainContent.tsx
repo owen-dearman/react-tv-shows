@@ -24,9 +24,10 @@ function MainContent(): JSX.Element {
   }, [data]);
 
   const [searchInput, setSearchInput] = useState<string>("");
-
   const filteredData = searchFilteredData(episodeData, searchInput);
 
+
+  
   return (
     <>
       <div style={{ textAlign: "center" }}>
