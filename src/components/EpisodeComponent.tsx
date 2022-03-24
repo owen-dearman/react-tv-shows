@@ -26,7 +26,8 @@ export default function EpisodeComponent(
           </h2>
           <h2>{episodeInfo.name}</h2>
           {episodeInfo.image && (
-            <img className="episodeImg"
+            <img
+              className="episodeImg"
               src={episodeInfo.image.medium}
               alt={episodeInfo.name + " image"}
             />
