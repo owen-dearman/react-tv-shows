@@ -1,11 +1,12 @@
 // import episodeData from "./episodes.json";
-import { IShow } from "./IShow";
+// import { IShow } from "./IShow";
+import showData from "./shows.json"
 
 export default function ShowComponent(
-  filteredData: IShow[],
+  filteredData: typeof showData,
 ): JSX.Element {
   const showComponents: JSX.Element[] = filteredData.map(
-    (seriesInfo: IShow) => {
+    (seriesInfo) => {
       return (
         <div
           className="blockContent"
