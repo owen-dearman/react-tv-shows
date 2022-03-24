@@ -1,6 +1,6 @@
 // import episodeData from "./episodes.json";
 // import { IShow } from "./IShow";
-import showData from "./shows.json";
+import showData from "../utils/shows.json";
 import { episodeDataPreparation } from "../utils/episodeDataPreparation";
 
 interface ShowComponentProps {
@@ -16,7 +16,7 @@ export default function ShowComponent(props: ShowComponentProps): JSX.Element {
     (seriesInfo) => {
       return (
         <div
-          className="blockContent"
+          className="seriesBlockContent"
           key={seriesInfo.id}
           id={seriesInfo.id.toString()}
           onClick={() => {
@@ -24,25 +24,31 @@ export default function ShowComponent(props: ShowComponentProps): JSX.Element {
             props.setCurrentShow(seriesInfo.id);
           }}
         >
-          <h2>{seriesInfo.name}</h2>
-          <p>{seriesInfo.genres.join(", ")}</p>
+          <div className="seriesBlockTitle">
+          <h2 style={{fontSize: 40}}>{seriesInfo.name}</h2>
+          <p style={{fontSize: 20}}>{seriesInfo.genres.join(", ")}</p>
+          </div>
+          <div className="seriesBlockRest">
           {seriesInfo.image && (
-            <img
+            <img className="seriesImg"
               src={seriesInfo.image.medium}
               alt={seriesInfo.name + " image"}
             />
           )}
           {seriesInfo.image === null && <i>image unavailable</i>}
-          <p>{seriesInfo.summary}</p>
+          <p style={{padding: 20}}>{seriesInfo.summary}</p>
+          <div style={{padding: 20}} className="seriesBlockData">
           <h4 className="blockSubtitle">
-            Episode Run Time: {seriesInfo.runtime} minutes
+            {seriesInfo.runtime} minutes
           </h4>
           <h4 className="blockSubtitle">
             {seriesInfo.rating.average &&
-              `Series Rating: ${seriesInfo.rating.average} / 10`}
+              `${seriesInfo.rating.average} / 10`}
           </h4>
-          <h3>Show Status: {seriesInfo.status}</h3>
-        </div>
+          <h3>{seriesInfo.status}</h3>
+          </div>
+          </div>
+          </div>
       );
     }
   );

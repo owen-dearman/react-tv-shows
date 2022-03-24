@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ShowComponent from "../utils/ShowComponent";
+import ShowComponent from "./ShowComponent";
 import showData from "../utils/shows.json";
 import { showFilteredData } from "../utils/showFilteredData";
 
@@ -29,7 +29,7 @@ function ShowContent(props: ShowContentProps): JSX.Element {
       <p className="subtitle">
         Showing {filteredData.length} of {showData.length}
       </p>
-      <div className="block">
+      <div className="seriesBlock">
         {" "}
         <ShowComponent
           setCurrentShow={props.setCurrentShow}

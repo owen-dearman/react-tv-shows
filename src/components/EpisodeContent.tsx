@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { searchFilteredData } from "../utils/searchFilteredData";
-import EpisodeComponent from "../utils/EpisodeComponent";
+import EpisodeComponent from "./EpisodeComponent";
 import { optionsList } from "../utils/OptionList";
 import { IEpisode } from "../utils/IEpisode";
 import { useEffect } from "react";

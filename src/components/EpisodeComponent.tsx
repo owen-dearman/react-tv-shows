@@ -1,7 +1,7 @@
 // import episodeData from "./episodes.json";
-import { IEpisode } from "./IEpisode";
-import { episodeDataPreparation } from "./episodeDataPreparation";
-import { twoDigitConverter } from "./twoDigitConverter";
+import { IEpisode } from "../utils/IEpisode";
+import { episodeDataPreparation } from "../utils/episodeDataPreparation";
+import { twoDigitConverter } from "../utils/twoDigitConverter";
 
 interface EpisodeComponentInterface {
   filteredData: IEpisode[];
@@ -26,7 +26,7 @@ export default function EpisodeComponent(
           </h2>
           <h2>{episodeInfo.name}</h2>
           {episodeInfo.image && (
-            <img
+            <img className="episodeImg"
               src={episodeInfo.image.medium}
               alt={episodeInfo.name + " image"}
             />

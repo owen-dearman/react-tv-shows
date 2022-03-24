@@ -7,10 +7,10 @@ body{
     margin: 50px auto;
     border-radius: 150px;
     padding: 20px;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; */
 }
 
 .appTitle{
@@ -42,6 +42,44 @@ body{
 
 }
 
+.seriesBlock{
+    display: block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+.seriesBlockContent {
+    padding: 20px;
+    margin: 5px;
+    background-color: #00ffff;;
+    color:rgb(0, 0, 0);
+    font-size: 20px;
+    border: 10px solid yellow;
+    border-radius: 50px;
+}
+
+.seriesBlockTitle {
+    display:flex;
+    flex-direction: column;
+    color: rgb(12, 0, 63);
+    text-align: center;
+    justify-content: center;
+}
+
+.seriesBlockRest {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+}
+
+.seriesBlockData{
+    display:flex;
+    flex-direction: column;
+}
+
 .blockTitle {
     text-align: center;
     color:rgb(253, 249, 9)
@@ -52,9 +90,16 @@ body{
     color: yellow;
 }
 
-img{
+.episodeImg{
     width: 60%;
     border: 10px solid #00ffff;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.seriesImg{
+    border: 10px solid yellow;
     border-radius: 10px;
     padding: 5px;
     text-align: center;
