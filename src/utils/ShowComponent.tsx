@@ -1,11 +1,10 @@
 // import episodeData from "./episodes.json";
 import { IShow } from "./IShow";
 
-export default function EpisodeComponent(
+export default function ShowComponent(
   filteredData: IShow[],
-  episodeData: IShow[]
 ): JSX.Element {
-  const episodeComponents: JSX.Element[] = filteredData.map(
+  const showComponents: JSX.Element[] = filteredData.map(
     (seriesInfo: IShow) => {
       return (
         <div
@@ -28,12 +27,12 @@ export default function EpisodeComponent(
           </h4>
           <h4 className="blockSubtitle">
             {seriesInfo.rating.average &&
-              `Episode Rating: ${seriesInfo.rating.average} / 10`}
+              `Series Rating: ${seriesInfo.rating.average} / 10`}
           </h4>
           <h3>Show Status: {seriesInfo.status}</h3>
         </div>
       );
     }
   );
-  return <>{episodeComponents}</>;
+  return <>{showComponents}</>;
 }
