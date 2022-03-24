@@ -1,11 +1,14 @@
 import MainContent from "./components/MainContent";
 import Header from "./components/Header";
+import { useState } from "react";
 
 function App(): JSX.Element {
+  const [view,setView] = useState<boolean>(false)
   return (
     <>
       <Header />
-      <MainContent />
+      <button onClick={()=>setView(!view)}>View Main Content</button>
+      {view && <MainContent />}
     </>
   );
 }
