@@ -9,8 +9,10 @@ function App(): JSX.Element {
     <>
       <Header />
       <button onClick={()=>setView(!view)}>View Main Content</button>
+
       {view && <EpisodeContent />}
       {!view && <ShowContent />}
+
     </>
   );
 }
