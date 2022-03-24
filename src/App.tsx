@@ -15,7 +15,11 @@ function App(): JSX.Element {
   return (
     <>
       <Header />
-      <button onClick={() => setView(!view)}>View Main Content</button>
+      {view ? (
+        <button onClick={() => setView(!view)}>View Series List</button>
+      ) : (
+        <button onClick={() => setView(!view)}>View Episodes List</button>
+      )}
 
       {view && <EpisodeContent currentShow={data} setCurrentShow={setData} />}
       {!view && (
