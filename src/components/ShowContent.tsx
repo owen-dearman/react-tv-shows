@@ -3,7 +3,11 @@ import ShowComponent from "../utils/ShowComponent";
 import showData from "../utils/shows.json";
 import { showFilteredData } from "../utils/showFilteredData";
 
-function ShowContent(handleClick: () => void): JSX.Element {
+interface ShowContentProps {
+  handleClick: () => void;
+}
+
+function ShowContent(props: ShowContentProps): JSX.Element {
   const [searchInput, setSearchInput] = useState<string>("");
   const filteredData = showFilteredData(showData, searchInput);
 
@@ -23,7 +27,13 @@ function ShowContent(handleClick: () => void): JSX.Element {
       <p className="subtitle">
         Showing {filteredData.length} of {showData.length}
       </p>
-      <div className="block">{ShowComponent(filteredData, handleClick)}</div>
+      <div className="block">
+        {" "}
+        <ShowComponent
+          showDataArray={showData}
+          handleClick={props.handleClick}
+        />
+      </div>
       <footer className="subtitle">
         <hr />
         The data displayed on this webpage is the property of TVMaze. Please

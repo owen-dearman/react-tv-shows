@@ -13,10 +13,10 @@ function App(): JSX.Element {
   return (
     <>
       <Header />
-      <button onClick={handleClick}>View Main Content</button>
+      <button onClick={() => setView(!view)}>View Main Content</button>
 
       {view && <EpisodeContent />}
-      {!view && ShowContent(handleClick)}
+      {!view && <ShowContent handleClick={handleClick} />}
     </>
   );
 }
