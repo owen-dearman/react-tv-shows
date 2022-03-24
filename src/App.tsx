@@ -5,13 +5,18 @@ import { useState } from "react";
 
 function App(): JSX.Element {
   const [view, setView] = useState<boolean>(false);
+
+  function handleClick() {
+    setView(!view);
+  }
+
   return (
     <>
       <Header />
-      <button onClick={() => setView(!view)}>View Main Content</button>
+      <button onClick={handleClick}>View Main Content</button>
 
       {view && <EpisodeContent />}
-      {!view && <ShowContent />}
+      {!view && ShowContent(handleClick)}
     </>
   );
 }

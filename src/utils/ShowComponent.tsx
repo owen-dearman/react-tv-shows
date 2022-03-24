@@ -4,15 +4,18 @@ import showData from "./shows.json";
 import { episodeDataPreparation } from "../utils/episodeDataPreparation";
 
 export default function ShowComponent(
-  showDataArray: typeof showData
+  showDataArray: typeof showData,
+  handleClick: () => void
 ): JSX.Element {
   episodeDataPreparation(showData);
+
   const showComponents: JSX.Element[] = showDataArray.map((seriesInfo) => {
     return (
       <div
         className="blockContent"
         key={seriesInfo.id}
         id={seriesInfo.id.toString()}
+        onClick={handleClick}
       >
         <h2>{seriesInfo.name}</h2>
         <p>{seriesInfo.genres.join(", ")}</p>
