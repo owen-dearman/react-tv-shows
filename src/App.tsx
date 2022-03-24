@@ -1,4 +1,5 @@
-import MainContent from "./components/MainContent";
+import EpisodeContent from "./components/EpisodeContent";
+import ShowContent from "./components/ShowContent";
 import Header from "./components/Header";
 import { useState } from "react";
 
@@ -8,7 +9,10 @@ function App(): JSX.Element {
     <>
       <Header />
       <button onClick={()=>setView(!view)}>View Main Content</button>
-      {view && <MainContent />}
+
+      {view && <EpisodeContent />}
+      {!view && <ShowContent />}
+
     </>
   );
 }

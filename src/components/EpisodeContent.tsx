@@ -8,7 +8,7 @@ import showData from "../utils/shows.json";
 import { twoDigitConverter } from "../utils/twoDigitConverter";
 import { showsList } from "../utils/ShowsList";
 
-function MainContent(): JSX.Element {
+function EpisodeContent(): JSX.Element {
   const [episodeData, setEpisodeData] = useState<IEpisode[]>([]);
   const [data, setData] = useState<number>(showData[0].id);
 
@@ -24,7 +24,6 @@ function MainContent(): JSX.Element {
   }, [data]);
 
   const [searchInput, setSearchInput] = useState<string>("");
-
   const filteredData = searchFilteredData(episodeData, searchInput);
 
   return (
@@ -76,4 +75,4 @@ function MainContent(): JSX.Element {
   );
 }
 
-export default MainContent;
+export default EpisodeContent;
