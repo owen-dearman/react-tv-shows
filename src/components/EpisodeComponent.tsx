@@ -2,17 +2,17 @@
 import { IEpisode } from "../utils/IEpisode";
 import { episodeDataPreparation } from "../utils/episodeDataPreparation";
 import { twoDigitConverter } from "../utils/twoDigitConverter";
-import { useState } from "react";
 
 interface EpisodeComponentInterface {
   filteredData: IEpisode[];
   episodeData: IEpisode[];
+  fav: IEpisode[];
+  setFav: (x: IEpisode[]) => void;
 }
 
 export default function EpisodeComponent(
   props: EpisodeComponentInterface
 ): JSX.Element {
-  const [favList, setfavList] = useState<IEpisode[]>([]);
   const episodeComponents: JSX.Element[] = props.filteredData.map(
     (episodeInfo: IEpisode) => {
       episodeDataPreparation(props.filteredData);
@@ -31,11 +31,17 @@ export default function EpisodeComponent(
             {episodeInfo.name}{" "}
             <span
               className={
-                favList.includes(episodeInfo)
+                props.fav.includes(episodeInfo)
                   ? "fa fa-star checked"
                   : "fa fa-star"
               }
-              onClick={() => setfavList([...favList, episodeInfo])}
+              onClick={() => {
+                props.fav.find((x) => x.id === episodeInfo.id) !== undefined
+                  ? props.setFav(
+                      props.fav.filter((x) => x.id !== episodeInfo.id)
+                    )
+                  : props.setFav([...props.fav, episodeInfo]);
+              }}
             >
               {" "}
             </span>

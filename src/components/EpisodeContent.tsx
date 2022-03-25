@@ -6,6 +6,7 @@ import { IEpisode } from "../utils/IEpisode";
 import { useEffect } from "react";
 import { twoDigitConverter } from "../utils/twoDigitConverter";
 import { showsList } from "../utils/ShowsList";
+import showData from "../utils/shows.json";
 
 interface EpisodeContentInterface {
   currentShow: number;
@@ -17,6 +18,7 @@ function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
     window.scrollTo(0, 0);
   }, []);
 
+  const [favList, setFavList] = useState<IEpisode[]>([]);
   const [episodeData, setEpisodeData] = useState<IEpisode[]>([]);
 
   useEffect(() => {
@@ -31,7 +33,8 @@ function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
 
   const [searchInput, setSearchInput] = useState<string>("");
   const filteredData = searchFilteredData(episodeData, searchInput);
-
+  const currentShowName = showData.filter((x) => x.id === props.currentShow)[0]
+    .name;
   return (
     <>
       <div style={{ textAlign: "center" }}>
@@ -63,11 +66,22 @@ function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
       <p className="subtitle">
         Showing {filteredData.length} of {episodeData.length}
       </p>
+      <h2 style={{ color: "white" }}>Your Favorite Episodes List:</h2>
+      {favList.map((x) => (
+        <div key={x.id} className="Fav">
+          {" "}
+          {currentShowName} -- S{twoDigitConverter(x.season)}E
+          {twoDigitConverter(x.number)} {x.name}{" "}
+        </div>
+      ))}
+
       <div className="block">
         {" "}
         <EpisodeComponent
           filteredData={filteredData}
           episodeData={episodeData}
+          fav={favList}
+          setFav={setFavList}
         />
       </div>
       <footer className="subtitle">
