@@ -6,7 +6,7 @@ import { IEpisode } from "../utils/IEpisode";
 import { useEffect } from "react";
 import { twoDigitConverter } from "../utils/twoDigitConverter";
 import { showsList } from "../utils/ShowsList";
-import alphabeticalSort from "../utils/AlphabeticalSort"
+import alphabeticalSort from "../utils/AlphabeticalSort";
 
 interface EpisodeContentInterface {
   currentShow: number;
@@ -22,9 +22,11 @@ function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
   const [sortedData, setSortedData] = useState<IEpisode[]>([]); //for sorting buttons
 
   function sortAlphabetically() {
-    const sorted= episodeData.sort((episodeInfo1, episodeInfo2)=>alphabeticalSort(episodeInfo1.name,episodeInfo2.name))
+    const sorted = episodeData.sort((episodeInfo1, episodeInfo2) =>
+      alphabeticalSort(episodeInfo1.name, episodeInfo2.name)
+    );
 
-    setSortedData(sorted)
+    setSortedData(sorted);
 
     // console.log(episodeData)
   }
@@ -42,7 +44,6 @@ function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
 
   const [searchInput, setSearchInput] = useState<string>("");
   const filteredData = searchFilteredData(sortedData, searchInput);
-  
 
   return (
     <>
@@ -63,7 +64,7 @@ function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <button onClick={() => setSearchInput("")}>Clear Search</button>
-        <button onClick = {sortAlphabetically}>🅰️</button>
+        <button onClick={sortAlphabetically}>🅰️</button>
         {/* <button onClick = {()=>}>⬆️</button>
         <button onClick = {()=>}>⏰</button> */}
         <select
