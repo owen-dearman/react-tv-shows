@@ -2,6 +2,7 @@
 import { IEpisode } from "../utils/IEpisode";
 import { episodeDataPreparation } from "../utils/episodeDataPreparation";
 import { twoDigitConverter } from "../utils/twoDigitConverter";
+import { useState } from "react";
 
 interface EpisodeComponentInterface {
   filteredData: IEpisode[];
@@ -11,9 +12,11 @@ interface EpisodeComponentInterface {
 export default function EpisodeComponent(
   props: EpisodeComponentInterface
 ): JSX.Element {
+  const [favList, setfavList] = useState<IEpisode[]>([]);
   const episodeComponents: JSX.Element[] = props.filteredData.map(
     (episodeInfo: IEpisode) => {
-      episodeDataPreparation(props.episodeData);
+      episodeDataPreparation(props.filteredData);
+
       return (
         <div
           className="blockContent"
@@ -24,7 +27,20 @@ export default function EpisodeComponent(
             S{twoDigitConverter(episodeInfo.season)}E
             {twoDigitConverter(episodeInfo.number)}
           </h2>
-          <h2>{episodeInfo.name}</h2>
+          <h2>
+            {episodeInfo.name}{" "}
+            <span
+              className={
+                favList.includes(episodeInfo)
+                  ? "fa fa-star checked"
+                  : "fa fa-star"
+              }
+              onClick={() => setfavList([...favList, episodeInfo])}
+            >
+              {" "}
+            </span>
+          </h2>
+
           {episodeInfo.image && (
             <img
               className="episodeImg"
@@ -33,7 +49,7 @@ export default function EpisodeComponent(
             />
           )}
           {episodeInfo.image === null && <i>image unavailable</i>}
-          <p>{episodeInfo.summary && episodeInfo.summary}</p>
+          <p>{episodeInfo.summary}</p>
           <h4 className="blockSubtitle">
             Episode Run Time: {episodeInfo.runtime} minutes
           </h4>
