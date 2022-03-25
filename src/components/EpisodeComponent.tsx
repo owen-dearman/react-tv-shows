@@ -12,11 +12,11 @@ interface EpisodeComponentInterface {
 export default function EpisodeComponent(
   props: EpisodeComponentInterface
 ): JSX.Element {
-  const [favList,setfavList] = useState<IEpisode[]>([])
+  const [favList, setfavList] = useState<IEpisode[]>([]);
   const episodeComponents: JSX.Element[] = props.filteredData.map(
     (episodeInfo: IEpisode) => {
       episodeDataPreparation(props.filteredData);
-      
+
       return (
         <div
           className="blockContent"
@@ -27,8 +27,20 @@ export default function EpisodeComponent(
             S{twoDigitConverter(episodeInfo.season)}E
             {twoDigitConverter(episodeInfo.number)}
           </h2>
-          <h2>{episodeInfo.name} <span className={favList.includes(episodeInfo)?"fa fa-star checked":"fa fa-star"} onClick={()=>setfavList([...favList,episodeInfo])}> </span></h2> 
-          
+          <h2>
+            {episodeInfo.name}{" "}
+            <span
+              className={
+                favList.includes(episodeInfo)
+                  ? "fa fa-star checked"
+                  : "fa fa-star"
+              }
+              onClick={() => setfavList([...favList, episodeInfo])}
+            >
+              {" "}
+            </span>
+          </h2>
+
           {episodeInfo.image && (
             <img
               className="episodeImg"
