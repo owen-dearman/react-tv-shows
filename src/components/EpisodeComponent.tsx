@@ -13,7 +13,7 @@ export default function EpisodeComponent(
 ): JSX.Element {
   const episodeComponents: JSX.Element[] = props.filteredData.map(
     (episodeInfo: IEpisode) => {
-      episodeDataPreparation(props.episodeData);
+      episodeDataPreparation(props.filteredData);
       return (
         <div
           className="blockContent"
@@ -33,7 +33,7 @@ export default function EpisodeComponent(
             />
           )}
           {episodeInfo.image === null && <i>image unavailable</i>}
-          <p>{episodeInfo.summary && episodeInfo.summary}</p>
+          <p>{episodeInfo.summary}</p>
           <h4 className="blockSubtitle">
             Episode Run Time: {episodeInfo.runtime} minutes
           </h4>

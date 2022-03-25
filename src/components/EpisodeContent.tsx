@@ -6,6 +6,7 @@ import { IEpisode } from "../utils/IEpisode";
 import { useEffect } from "react";
 import { twoDigitConverter } from "../utils/twoDigitConverter";
 import { showsList } from "../utils/ShowsList";
+import alphabeticalSort from "../utils/AlphabeticalSort"
 
 interface EpisodeContentInterface {
   currentShow: number;
@@ -18,6 +19,15 @@ function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
   }, []);
 
   const [episodeData, setEpisodeData] = useState<IEpisode[]>([]);
+  const [sortedData, setSortedData] = useState<IEpisode[]>([]); //for sorting buttons
+
+  function sortAlphabetically() {
+    const sorted= episodeData.sort((episodeInfo1, episodeInfo2)=>alphabeticalSort(episodeInfo1.name,episodeInfo2.name))
+
+    setSortedData(sorted)
+
+    // console.log(episodeData)
+  }
 
   useEffect(() => {
     const url = `https://api.tvmaze.com/shows/${props.currentShow}/episodes`;
@@ -25,12 +35,14 @@ function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
       const response = await fetch(url);
       const jsonBody: IEpisode[] = await response.json();
       setEpisodeData(jsonBody);
+      setSortedData(jsonBody);
     };
     fetchData();
   }, [props.currentShow]);
 
   const [searchInput, setSearchInput] = useState<string>("");
-  const filteredData = searchFilteredData(episodeData, searchInput);
+  const filteredData = searchFilteredData(sortedData, searchInput);
+  
 
   return (
     <>
@@ -51,6 +63,9 @@ function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <button onClick={() => setSearchInput("")}>Clear Search</button>
+        <button onClick = {sortAlphabetically}>🅰️</button>
+        {/* <button onClick = {()=>}>⬆️</button>
+        <button onClick = {()=>}>⏰</button> */}
         <select
           style={{ fontSize: 20 }}
           onChange={(e) => setSearchInput(e.target.value)}
@@ -67,7 +82,7 @@ function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
         {" "}
         <EpisodeComponent
           filteredData={filteredData}
-          episodeData={episodeData}
+          episodeData={sortedData}
         />
       </div>
       <footer className="subtitle">
@@ -75,7 +90,7 @@ function EpisodeContent(props: EpisodeContentInterface): JSX.Element {
         The data displayed on this webpage is the property of TVMaze. Please
         click below to navigate to the official data source for each episode.
         <br />
-        {episodeData.map((episode) => (
+        {sortedData.map((episode) => (
           <li key={episode.id}>
             <a href={episode.url}>
               S{twoDigitConverter(episode.season)}E
