@@ -129,3 +129,8 @@ button{
     font-size: 20px;
     background-color: yellow;
 }
+
+.checked {
+    color: yellow;
+  }
+
