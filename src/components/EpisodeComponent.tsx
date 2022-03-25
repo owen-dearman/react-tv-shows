@@ -33,7 +33,7 @@ export default function EpisodeComponent(
             />
           )}
           {episodeInfo.image === null && <i>image unavailable</i>}
-          <p>{episodeInfo.summary}</p>
+          <p>{episodeInfo.summary && episodeInfo.summary}</p>
           <h4 className="blockSubtitle">
             Episode Run Time: {episodeInfo.runtime} minutes
           </h4>
